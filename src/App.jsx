@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import profileImg from './assets/photo.png';
+
 import { 
   Linkedin, 
   Facebook, 
@@ -84,7 +86,7 @@ const App = () => {
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.target.src =
-                    "https://api.dicebear.com/7.x/avataaars/svg?seed=Mostafa";
+                    
                 }}
               />
             </div>
