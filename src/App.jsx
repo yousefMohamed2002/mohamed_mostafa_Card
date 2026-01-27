@@ -85,7 +85,7 @@ const App = () => {
                 alt={t.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.target.src =
+                  e.target.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Mostafa";
                     
                 }}
               />
