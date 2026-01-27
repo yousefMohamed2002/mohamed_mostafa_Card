@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import profileImg from './assets/photo.png';
+// استيراد الصورة كمتغير لضمان معالجتها بواسطة Vite/Webpack
+import profileImg from './assets/photo.png'; 
 
 import { 
   Linkedin, 
   Facebook, 
   Instagram, 
   FileText, 
-  Phone 
+  Phone,
+  MessageCircle // أيقونة أنسب للواتساب
 } from 'lucide-react';
 
 /**
- * Mohammed Mostafa Portfolio
+ * Mohammed Mostafa Portfolio - Optimized for Vercel
  */
 
 const App = () => {
@@ -32,16 +34,16 @@ const App = () => {
       role: "Sales Manager @ VAI Development",
       skills: ["Sales Strategy", "Business Development", "CRM", "Client Relations"],
       resume: "Download CV",
-      image: "src/assets/photo.png",
-      pdf: ""
+      image: profileImg, // استخدام المتغير المستورد هنا
+      pdf: "/resume.pdf" // ضع ملف الـ PDF في مجلد public وسمه resume.pdf
     },
     ar: {
       name: "محمد مصطفى",
       role: "مدير مبيعات في VAI Development",
       skills: ["إدارة المبيعات", "تطوير الأعمال", "إدارة علاقات العملاء", "التفاوض"],
       resume: "تحميل السيرة الذاتية",
-      image: "src/assets/photo.png",
-      pdf: ""
+      image: profileImg, // استخدام المتغير المستورد هنا
+      pdf: "/resume.pdf"
     }
   };
 
@@ -54,7 +56,7 @@ const App = () => {
       }`}
       dir={isRtl ? 'rtl' : 'ltr'}
     >
-      {/* Background */}
+      {/* Background Decor */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px]"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/10 blur-[120px]"></div>
@@ -77,7 +79,7 @@ const App = () => {
         </nav>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Main Card */}
+          {/* Main Profile Card */}
           <div className="md:col-span-2 bg-[#111] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center shadow-2xl">
             <div className="w-40 h-40 rounded-2xl overflow-hidden ring-2 ring-white/10 bg-[#1a1a1a]">
               <img
@@ -86,7 +88,6 @@ const App = () => {
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.target.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Mostafa";
-                    
                 }}
               />
             </div>
@@ -97,44 +98,44 @@ const App = () => {
             </div>
           </div>
 
-          {/* Socials */}
+          {/* Social Icons Grid */}
           <div className="bg-[#111] border border-white/10 rounded-3xl p-6 grid grid-cols-2 gap-3">
             <a
               href={userData.phone}
-              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-green-500 transition-all"
+              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-green-500 transition-all group"
             >
-              <Phone />
+              <Phone className="group-hover:scale-110 transition-transform" />
             </a>
 
             <a
               href={userData.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition-all"
+              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition-all group"
             >
-              <Linkedin />
+              <Linkedin className="group-hover:scale-110 transition-transform" />
             </a>
 
             <a
               href={userData.facebook}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-blue-800 transition-all"
+              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-blue-800 transition-all group"
             >
-              <Facebook />
+              <Facebook className="group-hover:scale-110 transition-transform" />
             </a>
 
             <a
               href={userData.instagram}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-pink-600 transition-all"
+              className="flex items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-pink-600 transition-all group"
             >
-              <Instagram />
+              <Instagram className="group-hover:scale-110 transition-transform" />
             </a>
           </div>
 
-          {/* Skills */}
+          {/* Skills Section */}
           <div className="bg-[#111] border border-white/10 rounded-3xl p-6">
             <h3 className="text-[10px] font-black text-gray-500 uppercase mb-4 tracking-[0.2em]">
               {isRtl ? 'المهارات' : 'Stack'}
@@ -151,13 +152,12 @@ const App = () => {
             </div>
           </div>
 
-          {/* CV & WhatsApp */}
+          {/* Actions: CV & WhatsApp */}
           <div className="md:col-span-2 flex gap-4">
             <a
               href={t.pdf}
-              target="_blank"
-              rel="noreferrer"
-              className="flex-1 bg-blue-600 p-6 rounded-3xl flex items-center justify-center gap-3 font-bold hover:bg-blue-700"
+              download
+              className="flex-1 bg-blue-600 p-6 rounded-3xl flex items-center justify-center gap-3 font-bold hover:bg-blue-700 transition-colors"
             >
               <FileText /> {t.resume}
             </a>
@@ -166,24 +166,26 @@ const App = () => {
               href={userData.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#25D366] p-6 rounded-3xl flex items-center justify-center hover:scale-105 transition-all"
+              className="bg-[#25D366] px-8 rounded-3xl flex items-center justify-center hover:scale-105 transition-all"
             >
-              <Phone />
+              <MessageCircle size={28} />
             </a>
           </div>
         </div>
 
         {/* Footer */}
         <footer className="mt-16 text-center opacity-30 text-[10px] font-bold tracking-[0.5em] uppercase">
-          {"Yousef Mohamed"} © 2026
+          Mohammed Mostafa © 2026
         </footer>
       </div>
 
+      {/* Global Styles */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
           @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
           .font-arabic { font-family: 'Cairo', sans-serif; }
+          body { background-color: #050505; }
         `,
         }}
       />
