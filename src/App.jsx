@@ -175,7 +175,7 @@ const App = () => {
 
         {/* Footer */}
         <footer className="mt-16 text-center opacity-30 text-[10px] font-bold tracking-[0.5em] uppercase">
-          {t.name} © 2026
+          {"Yousef Mohamed"} © 2026
         </footer>
       </div>
 
