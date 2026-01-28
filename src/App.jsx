@@ -35,7 +35,7 @@ const App = () => {
       skills: ["Sales Strategy", "Business Development", "CRM", "Client Relations"],
       resume: "Download CV",
       image: profileImg, // استخدام المتغير المستورد هنا
-      pdf: "/resume.pdf" // ضع ملف الـ PDF في مجلد public وسمه resume.pdf
+      pdf: "" // ضع ملف الـ PDF في مجلد public وسمه resume.pdf
     },
     ar: {
       name: "محمد مصطفى",
